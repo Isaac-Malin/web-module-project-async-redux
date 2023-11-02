@@ -1,16 +1,17 @@
 import React from "react";
 import "./ActivityTile.css";
 import { connect } from "react-redux";
+import { getActivity } from "../actions";
 
 const ActivityTile = (props) => {
   return (
     <div className="app-container">
       <div className="activity-container">
         <h3>ACTIVITY IDEAS</h3>
-        <p>ACTIVITY: {props.activity}</p>
-        <p>CATEGORY: {props.type}</p>
-        <p>PRICE: ${props.price * 10}</p>
-        <button>Get A New Activity Idea!</button>
+        <p>ACTIVITY: {props.activities.activity}</p>
+        <p>CATEGORY: {props.activities.type}</p>
+        <p>PRICE: ${props.activities.price * 10}</p>
+        <button onClick={() => props.getActivity()}>Get A New Activity Idea!</button>
       </div>
     </div>
   );
@@ -18,10 +19,8 @@ const ActivityTile = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    activity: state.activity,
-    type: state.type,
-    price: state.price,
+    activities: state.activities
   };
 };
 
-export default connect(mapStateToProps, {})(ActivityTile);
+export default connect(mapStateToProps, {getActivity})(ActivityTile);
