@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
 
+import ActivityTile from './components/ActivityTile';
+
 function App() {
   return (
     <div className="App">
-      Async Redux Project
+      <ActivityTile />
     </div>
   );
 }
